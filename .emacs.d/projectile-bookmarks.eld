@@ -1,0 +1,1 @@
+("~/work/anpi/" "~/dotfiles/" "~/work/schema/")

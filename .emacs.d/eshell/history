@@ -1,0 +1,17 @@
+git status
+git checkout master
+git status
+cd ..
+ag find-topic
+lein midje
+lein midjegit status
+lein midje
+lein midje anpi.entity.comment-test
+lein midje anpi.entity.comment-test
+ag find company-id
+ag find company
+man ag
+ag company-id .
+lein midje anpi.entity.comment-test
+cd ..
+git status
