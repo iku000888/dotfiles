@@ -23,6 +23,36 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;
 ;;;
+;;; Utilities (copied from https://github.com/rfkm/.emacs.d)
+;;;
+
+(defun my/untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun my/indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun my/cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a before-save-hook, and that
+might be bad."
+  (interactive)
+  (my/untabify-buffer)
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+(defun my/cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Including my/indent-buffer, which should not be called automatically on save."
+  (interactive)
+  (my/cleanup-buffer-safe)
+  (my/indent-buffer))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;
+;;;
 ;;; basic configurations
 ;;;
 
@@ -71,14 +101,14 @@
   (global-company-mode +1)
   (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
-        company-selection-wrap-around t)
+        company-selection-wrap-around t
+        company-global-modes '(not magit-mode))
 
   (bind-keys :map company-mode-map
              ("C-i" . company-complete))
   (bind-keys :map company-active-map
              ("C-n" . company-select-next)
-             ("C-p" . company-select-previous)
-             ("C-s" . company-search-words-regexp))
+             ("C-p" . company-select-previous))
   (bind-keys :map company-search-map
              ("C-n" . company-select-next)
              ("C-p" . company-select-previous)))
@@ -270,7 +300,8 @@
   :init
   (add-hook 'clojure-mode-hook #'yas-minor-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'my/lisp-mode-hook))
+  (add-hook 'clojure-mode-hook #'my/lisp-mode-hook)
+  (add-hook 'before-save-hook #'my/cleanup-buffer))
 
 (use-package cider
   :init
@@ -312,5 +343,5 @@
              ("C-h" . delete-backward-char)))
 
 
-                                        ;defined by me
+;; defined by me
 (load "~/.emacs.d/kbd.el")
