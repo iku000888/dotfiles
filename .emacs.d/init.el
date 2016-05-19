@@ -319,6 +319,8 @@ Including my/indent-buffer, which should not be called automatically on save."
         cider-overlays-use-font-lock t)
   (cider-repl-toggle-pretty-printing))
 
+(use-package midje-mode)
+
 (use-package cider-eval-sexp-fu)
 
 (use-package clj-refactor
