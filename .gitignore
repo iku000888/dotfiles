@@ -1,2 +1,5 @@
-auto-save-list
-tramp
+*
+.emacs.d/init.el
+.emacs.d/kbd.el
+.zshrc
+.xmodmap
