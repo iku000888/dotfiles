@@ -63,9 +63,9 @@ Including my/indent-buffer, which should not be called automatically on save."
 (setq use-package-verbose t)
 
 ;;; load your preferred theme
-(use-package zenburn-theme
+(use-package green-phosphor-theme
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'green-phosphor t))
 
 ;;; set up exec-path
 (use-package exec-path-from-shell
@@ -324,6 +324,7 @@ Including my/indent-buffer, which should not be called automatically on save."
 (use-package cider-eval-sexp-fu)
 
 (use-package clj-refactor
+  :init   (setq cljr-favor-prefix-notation nil)
   :diminish clj-refactor-mode
   :config (cljr-add-keybindings-with-prefix "C-c j"))
 
