@@ -338,6 +338,28 @@ Including my/indent-buffer, which should not be called automatically on save."
 (use-package magit
   :bind ("C-x g" . magit-status))
 
+(put-clojure-indent 'fnk 'defun)
+(put-clojure-indent 'defnk 'defun)
+(put-clojure-indent 'for-map 1)
+(put-clojure-indent 'instance 2)
+(put-clojure-indent 'inline 1)
+(put-clojure-indent 'letk 1)
+(put-clojure-indent 'when-letk 1)
+(put-clojure-indent 'go-loop 1)
+(put-clojure-indent 'this-as 'defun)
+(put-clojure-indent 'when-some '1)
+(put-clojure-indent 'if-some '1)
+(put-clojure-indent 'try+ 0)
+(put 'specify 'clojure-backtracking-indent '((2)))
+(put 'specify! 'clojure-backtracking-indent '((2)))
+(put 'defcomponent 'clojure-backtracking-indent '((2)))
+(put 'defcomponentk 'clojure-backtracking-indent '((2)))
+(put 'defmixin 'clojure-backtracking-indent '((2)))
+(put 'clojure.core/defrecord 'clojure-backtracking-indent '(4 4 (2)))
+(put 's/defrecord 'clojure-backtracking-indent '(4 4 (2)))
+(put 's/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
+(put 'potemkin/deftype+ 'clojure-backtracking-indent '(4 4 (2)))
+(put 'potemkin/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
 
 ;;; global keymap
 ;; (use-package bind-key
