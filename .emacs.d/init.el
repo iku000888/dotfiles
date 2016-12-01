@@ -369,5 +369,4 @@ Including my/indent-buffer, which should not be called automatically on save."
 
 
 ;; defined by me
-(load "~/.emacs.d/kbd.el")
 (define-key key-translation-map [?\C-h] [?\C-?])
