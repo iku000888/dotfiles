@@ -63,9 +63,9 @@ Including my/indent-buffer, which should not be called automatically on save."
 (setq use-package-verbose t)
 
 ;;; load your preferred theme
-(use-package green-phosphor-theme
+(use-package material-theme
   :config
-  (load-theme 'green-phosphor t))
+  (load-theme 'material t))
 
 ;;; set up exec-path
 (use-package exec-path-from-shell
@@ -321,7 +321,7 @@ Including my/indent-buffer, which should not be called automatically on save."
 
 (use-package midje-mode)
 
-(use-package cider-eval-sexp-fu)
+;; (use-package cider-eval-sexp-fu)
 
 (use-package clj-refactor
   :init   (setq cljr-favor-prefix-notation nil)
