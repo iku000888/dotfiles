@@ -368,5 +368,11 @@ Including my/indent-buffer, which should not be called automatically on save."
 ;;              ("C-h" . delete-backward-char)))
 
 
+(use-package bind-key
+  :config
+  (bind-keys :map global-map
+             ("C-+" . text-scale-increase)
+             ("C--" . text-scale-decrease)))
+
 ;; defined by me
 (define-key key-translation-map [?\C-h] [?\C-?])
