@@ -168,11 +168,6 @@ Including my/indent-buffer, which should not be called automatically on save."
 ;;; cleanup whitespace before file save
 ;;; (add-hook 'before-save-hook 'whitespace-cleanup)
 
-(use-package hl-line
-  :config
-  (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#525252"))
-
 ;;; modeline
 (setq display-time-string-forms
       '((format
