@@ -276,7 +276,10 @@ Including my/indent-buffer, which should not be called automatically on save."
 (use-package rainbow-delimiters
   :defer t)
 
+(use-package aggressive-indent)
+
 (defun my/lisp-mode-defaults ()
+  (aggressive-indent-mode 1)
   (paredit-mode 1)
   (rainbow-delimiters-mode 1)
   (eldoc-mode 1))
