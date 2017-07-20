@@ -299,7 +299,7 @@ Including my/indent-buffer, which should not be called automatically on save."
   (add-hook 'clojure-mode-hook #'yas-minor-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
   (add-hook 'clojure-mode-hook #'my/lisp-mode-hook)
-  (add-hook 'before-save-hook #'my/cleanup-buffer))
+  (add-hook 'before-save-hook #'my/cleanup-buffer-safe))
 
 (use-package cider
   :init
@@ -358,13 +358,6 @@ Including my/indent-buffer, which should not be called automatically on save."
 (put 's/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
 (put 'potemkin/deftype+ 'clojure-backtracking-indent '(4 4 (2)))
 (put 'potemkin/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
-
-;;; global keymap
-;; (use-package bind-key
-;;   :config
-;;   (bind-keys :map global-map
-;;              ("C-h" . delete-backward-char)))
-
 
 (use-package bind-key
   :config
