@@ -1,1 +1,3 @@
-cp -r . ~
+cp .Xmodmap ~
+cp .zshrc ~
+cp -r .emacs.d ~
