@@ -273,8 +273,7 @@
   :init
   (add-hook 'clojure-mode-hook #'yas-minor-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'my/lisp-mode-hook)
-  (add-hook 'before-save-hook #'my/cleanup-buffer))
+  (add-hook 'clojure-mode-hook #'my/lisp-mode-hook))
 
 (use-package cider
   :init
