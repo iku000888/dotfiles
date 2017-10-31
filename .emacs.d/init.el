@@ -136,12 +136,7 @@
   (setq-default tab-width 4 indent-tabs-mode nil))
 
 ;;; cleanup whitespace before file save
-;;; (add-hook 'before-save-hook 'whitespace-cleanup)
-
-(use-package hl-line
-  :config
-  (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#525252"))
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;; modeline
 (setq display-time-string-forms
@@ -290,8 +285,6 @@
         cider-font-lock-dynamically '(macro core function var)
         cider-overlays-use-font-lock t)
   (cider-repl-toggle-pretty-printing))
-
-(use-package midje-mode)
 
 (use-package clj-refactor
   :init   (setq cljr-favor-prefix-notation nil)
