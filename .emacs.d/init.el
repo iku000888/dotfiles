@@ -118,25 +118,24 @@
 (setq-default indicate-buffer-boundaries 'right)
 (setq uniquify-buffer-name-style 'post-forward)
 
-;; whitespace
-;; (use-package whitespace
-;;   :config
-;;   (setq whitespace-style '(face
-;;                            trailing
-;;                            tabs
-;;                            spaces
-;;                            empty
-;;                            space-mark
-;;                            tab-mark))
-;;   (setq whitespace-display-mappings
-;;         '((space-mark ?\u3000 [?\u25a1])
-;;           (tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
-;;   (setq whitespace-space-regexp "\\(\u3000+\\)")
-;;   (global-whitespace-mode 1)
-;;   (setq-default tab-width 4 indent-tabs-mode nil))
+(use-package whitespace
+  :config
+  (setq whitespace-style '(face
+                           trailing
+                           tabs
+                           spaces
+                           empty
+                           space-mark
+                           tab-mark))
+  (setq whitespace-display-mappings
+        '((space-mark ?\u3000 [?\u25a1])
+          (tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+  (setq whitespace-space-regexp "\\(\u3000+\\)")
+  (global-whitespace-mode 1)
+  (setq-default tab-width 4 indent-tabs-mode nil))
 
-;;; cleanup whitespace before file save
-;;(add-hook 'before-save-hook 'whitespace-cleanup)
+;;cleanup whitespace before file save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;; modeline
 (setq display-time-string-forms
@@ -199,7 +198,7 @@
         helm-ff-transformer-show-only-basename nil)
   (bind-keys :map global-map
              ("M-x" . helm-M-x)))
-                                        (use-package helm-projectile
+(use-package helm-projectile
   :config
   (mykie:set-keys nil
     "C-x C-f"
@@ -240,11 +239,11 @@
         (paredit-mode 1)))
   (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode))
 
-;; (use-package eldoc
-;;   :defer t
-;;   :config
-;;   (setq eldoc-idle-delay 0.1
-;;         eldoc-minor-mode-string ""))
+(use-package eldoc
+  :defer t
+  :config
+  (setq eldoc-idle-delay 0.1
+        eldoc-minor-mode-string ""))
 
 (use-package rainbow-delimiters
   :defer t)
@@ -253,8 +252,7 @@
   (aggressive-indent-mode 1)
   (paredit-mode 1)
   ;;(rainbow-delimiters-mode 1)
-  ;;(eldoc-mode 1)
-  )
+  (eldoc-mode 1))
 
 (defun my/lisp-mode-hook ()
   (my/lisp-mode-defaults))
