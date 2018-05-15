@@ -38,10 +38,10 @@
   (load-theme 'material t))
 
 ;;; set up exec-path
-(use-package exec-path-from-shell
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+;; (use-package exec-path-from-shell
+;;   :config
+;;   (when (memq window-system '(mac ns x))
+;;     (exec-path-from-shell-initialize)))
 
 (use-package mykie
   :config
@@ -55,16 +55,16 @@
   (show-paren-mode 1))
 
 ;;; yasnippet
-(use-package yasnippet
-  :init
-  (yas-global-mode 1)
-  (bind-keys :map yas-minor-mode-map
-             ("<tab>" . nil)
-             ("TAB" . nil)
-             ("C-i" . nil)
-             ("C-o" . yas/expand)))
+;; (use-package yasnippet
+;;   :init
+;;   (yas-global-mode 1)
+;;   (bind-keys :map yas-minor-mode-map
+;;              ("<tab>" . nil)
+;;              ("TAB" . nil)
+;;              ("C-i" . nil)
+;;              ("C-o" . yas/expand)))
 
-;;; comapany-mode!
+;;comapany-mode!
 (use-package company
   :defer t
   :config
@@ -84,13 +84,13 @@
              ("C-p" . company-select-previous)))
 
 ;;; projectile
-(use-package projectile
-  :init
-  (projectile-global-mode))
+;; (use-package projectile
+;;   :init
+;;   (projectile-global-mode))
 
-(use-package subword
-  :init
-  (global-subword-mode 1))
+;; (use-package subword
+;;   :init
+;;   (global-subword-mode 1))
 
 ;;; answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -118,7 +118,6 @@
 (setq-default indicate-buffer-boundaries 'right)
 (setq uniquify-buffer-name-style 'post-forward)
 
-;; whitespace
 (use-package whitespace
   :config
   (setq whitespace-style '(face
@@ -135,7 +134,7 @@
   (global-whitespace-mode 1)
   (setq-default tab-width 4 indent-tabs-mode nil))
 
-;;; cleanup whitespace before file save
+;;cleanup whitespace before file save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;; modeline
@@ -166,26 +165,26 @@
    global-mode-string
    ))
 
-(setq-default
- header-line-format
- '(""
-   (:propertize (:eval (shorten-directory default-directory 30))
-                face mode-line-folder-face)
-   (:propertize "%b"
-                face mode-line-filename-face)))
+;; (setq-default
+;;  header-line-format
+;;  '(""
+;;    (:propertize (:eval (shorten-directory default-directory 30))
+;;                 face mode-line-folder-face)
+;;    (:propertize "%b"
+;;                 face mode-line-filename-face)))
 
-(defun shorten-directory (dir max-length)
-  "Show up to `max-length' characters of a directory name `dir'."
-  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
-        (output ""))
-    (when (and path (equal "" (car path)))
-      (setq path (cdr path)))
-    (while (and path (< (length output) (- max-length 4)))
-      (setq output (concat (car path) "/" output))
-      (setq path (cdr path)))
-    (when path
-      (setq output (concat ".../" output)))
-    output))
+;; (defun shorten-directory (dir max-length)
+;;   "Show up to `max-length' characters of a directory name `dir'."
+;;   (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+;;         (output ""))
+;;     (when (and path (equal "" (car path)))
+;;       (setq path (cdr path)))
+;;     (while (and path (< (length output) (- max-length 4)))
+;;       (setq output (concat (car path) "/" output))
+;;       (setq path (cdr path)))
+;;     (when path
+;;       (setq output (concat ".../" output)))
+;;     output))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;
 ;;;
@@ -199,15 +198,15 @@
         helm-ff-transformer-show-only-basename nil)
   (bind-keys :map global-map
              ("M-x" . helm-M-x)))
-                                        ; (use-package helm-projectile
-;;   :config
-;;   (mykie:set-keys nil
-;;     "C-x C-f"
-;;     :default (call-interactively 'find-file)
-;;     :C-u helm-projectile-find-file
-;;     "C-x b"
-;;     :default (call-interactively 'switch-to-buffer)
-;;     :C-u helm-projectile-switch-to-buffer))
+                                        (use-package helm-projectile
+  :config
+  (mykie:set-keys nil
+    "C-x C-f"
+    :default (call-interactively 'find-file)
+    :C-u helm-projectile-find-file
+    "C-x b"
+    :default (call-interactively 'switch-to-buffer)
+    :C-u helm-projectile-switch-to-buffer))
 
 (use-package helm-ls-git
   :config
@@ -218,6 +217,7 @@
 
 (use-package helm-ag
   :bind ("C-x C-g" . helm-do-ag-project-root))
+
 
 
 
@@ -251,7 +251,7 @@
 (defun my/lisp-mode-defaults ()
   (aggressive-indent-mode 1)
   (paredit-mode 1)
-  (rainbow-delimiters-mode 1)
+  ;;(rainbow-delimiters-mode 1)
   (eldoc-mode 1))
 
 (defun my/lisp-mode-hook ()
@@ -266,8 +266,8 @@
 
 (use-package clojure-mode
   :init
-  (add-hook 'clojure-mode-hook #'yas-minor-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
+  ;;(add-hook 'clojure-mode-hook #'yas-minor-mode)
+  ;;(add-hook 'clojure-mode-hook #'subword-mode)
   (add-hook 'clojure-mode-hook #'my/lisp-mode-hook))
 
 (use-package cider
@@ -281,7 +281,7 @@
   (setq nrepl-log-messages t
         cider-repl-display-in-current-window t
         cider-repl-use-clojure-font-lock t
-        cider-prompt-save-file-on-load 'always-save
+        ;;cider-prompt-save-file-on-load 'always-save
         cider-font-lock-dynamically '(macro core function var)
         cider-overlays-use-font-lock t)
   (cider-repl-toggle-pretty-printing))
@@ -291,41 +291,23 @@
   :diminish clj-refactor-mode
   :config (cljr-add-keybindings-with-prefix "C-c j"))
 
-(message "init.el loaded!!")
+;;(message "init.el loaded!!")
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (message "init time: %.3f sec"
-                     (float-time (time-subtract after-init-time before-init-time)))))
+
+;; (add-hook 'after-init-hook
+;;           (lambda ()
+;;             (message "init time: %.3f sec"
+;;                      (float-time (time-subtract after-init-time before-init-time)))))
 
 (use-package magit
   :bind ("C-x g" . magit-status))
 
-(put-clojure-indent 'fnk 'defun)
-(put-clojure-indent 'defnk 'defun)
-(put-clojure-indent 'for-map 1)
-(put-clojure-indent 'instance 2)
-(put-clojure-indent 'inline 1)
-(put-clojure-indent 'letk 1)
-(put-clojure-indent 'when-letk 1)
-(put-clojure-indent 'go-loop 1)
-(put-clojure-indent 'this-as 'defun)
-(put-clojure-indent 'when-some '1)
-(put-clojure-indent 'if-some '1)
-(put-clojure-indent 'try+ 0)
-(put 'specify 'clojure-backtracking-indent '((2)))
-(put 'specify! 'clojure-backtracking-indent '((2)))
-(put 'defcomponent 'clojure-backtracking-indent '((2)))
-(put 'defcomponentk 'clojure-backtracking-indent '((2)))
-(put 'defmixin 'clojure-backtracking-indent '((2)))
-(put 'clojure.core/defrecord 'clojure-backtracking-indent '(4 4 (2)))
-(put 's/defrecord 'clojure-backtracking-indent '(4 4 (2)))
-(put 's/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
-(put 'potemkin/deftype+ 'clojure-backtracking-indent '(4 4 (2)))
-(put 'potemkin/defrecord+ 'clojure-backtracking-indent '(4 4 (2)))
+(use-package magit
+  :bind ("C-x t" . magit-section-toggle))
 
 ;;; global keymap
-(use-package bind-key
-  :config
-  (bind-keys :map global-map
-             ("C-h" . delete-backward-char)))
+;; (use-package bind-key
+;;   :config
+;;   (bind-keys :map global-map
+;;              ("C-h" . delete-backward-char)))
+(put 'set-goal-column 'disabled nil)
