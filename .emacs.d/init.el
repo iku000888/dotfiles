@@ -311,3 +311,17 @@
 ;;   (bind-keys :map global-map
 ;;              ("C-h" . delete-backward-char)))
 (put 'set-goal-column 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
