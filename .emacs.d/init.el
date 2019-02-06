@@ -47,6 +47,9 @@
   (setq mykie:use-major-mode-key-override t)
   (mykie:initialize))
 
+(use-package docker-tramp)
+(require 'docker-tramp-compat)
+
 ;;; happy (((()))) !!!
 (use-package paren
   :init
@@ -317,7 +320,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent))))
+    (docker-tramp magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
