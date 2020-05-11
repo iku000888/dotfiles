@@ -11,8 +11,8 @@
 ;;;
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
@@ -307,6 +307,9 @@
 (use-package magit
   :bind ("C-x t" . magit-section-toggle))
 
+(use-package ddskk
+  :bind ("C-x k" . skk-mode))
+
 ;;; global keymap
 ;; (use-package bind-key
 ;;   :config
@@ -320,7 +323,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (docker-tramp magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent))))
+    (ddskk cider docker-tramp magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
