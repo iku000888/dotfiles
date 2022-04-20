@@ -236,7 +236,9 @@
   :defer t
   :config
   (bind-keys :map paredit-mode-map
-             ("C-h" . paredit-backward-delete))
+             ("C-h" . paredit-backward-delete)
+             ;; karabiner element override not recognized?
+             ("C-0" . paredit-forward-slurp-sexp))
 
   (defun conditionally-enable-paredit-mode ()
     (if (eq this-command 'eval-expression)
@@ -326,7 +328,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dart-mode yaml-mode ddskk cider docker-tramp magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent)))
+   '(flycheck hover lsp-ui lsp-dart lsp-mode dart-mode yaml-mode ddskk cider docker-tramp magit use-package rainbow-delimiters mykie material-theme helm-projectile helm-ls-git helm-ag company clj-refactor aggressive-indent)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
