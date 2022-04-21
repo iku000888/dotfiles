@@ -220,7 +220,7 @@
     :C-u! helm-ls-git-ls))
 
 (use-package helm-ag
-  :bind ("C-x C-g" . helm-do-ag-project-root))
+  :bind ("C-x C-g" . helm-do-grep-ag))
 
 
 
